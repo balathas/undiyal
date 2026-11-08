@@ -1,0 +1,884 @@
+{
+ "settings": {
+  "fmt": "lakh",
+  "sym": "₹",
+  "eq": 0.1,
+  "db": 0.07,
+  "ot": 0.08,
+  "planYear": "2016-04-01",
+  "stale": 30,
+  "conc": 25
+ },
+ "goals": [
+  {
+   "id": "ret",
+   "name": "Retirement",
+   "base": 0,
+   "infl": 0.06,
+   "date": "2048-03-31",
+   "fixed": 60000000,
+   "kind": "corpus",
+   "bd": "2026-11-04",
+   "pre": "Retirement"
+  },
+  {
+   "id": "sret",
+   "name": "Spouse’s retirement",
+   "base": 0,
+   "infl": 0.06,
+   "date": "2049-03-31",
+   "fixed": 30000000,
+   "kind": "corpus",
+   "bd": "2026-11-04",
+   "pre": "Retirement"
+  },
+  {
+   "id": "edu1",
+   "name": "Child 1 higher education",
+   "base": 2500000,
+   "infl": 0.08,
+   "date": "2034-06-30",
+   "fixed": 0,
+   "bd": "2021-04-01",
+   "pre": "Child higher education"
+  },
+  {
+   "id": "edu2",
+   "name": "Child 2 higher education",
+   "base": 2500000,
+   "infl": 0.08,
+   "date": "2038-06-30",
+   "fixed": 0,
+   "bd": "2026-11-04",
+   "pre": "Child higher education"
+  },
+  {
+   "id": "mar1",
+   "name": "Child 1 marriage",
+   "base": 1500000,
+   "infl": 0.06,
+   "date": "2042-12-31",
+   "fixed": 0,
+   "bd": "2026-11-04",
+   "pre": "Child marriage"
+  },
+  {
+   "id": "house",
+   "name": "House down payment",
+   "base": 3000000,
+   "infl": 0.06,
+   "date": "2029-03-04",
+   "fixed": 0,
+   "bd": "2026-11-04",
+   "pre": "House"
+  },
+  {
+   "id": "emerg",
+   "name": "Emergency fund",
+   "base": 600000,
+   "infl": 0.06,
+   "date": "2027-07-04",
+   "fixed": 0,
+   "bd": "2026-11-04",
+   "pre": "Emergency fund"
+  },
+  {
+   "id": "car",
+   "name": "New car",
+   "base": 800000,
+   "infl": 0.05,
+   "date": "2028-03-04",
+   "fixed": 0,
+   "bd": "2026-11-04",
+   "pre": "Other goal"
+  },
+  {
+   "id": "vac",
+   "name": "Family vacation",
+   "base": 300000,
+   "infl": 0.05,
+   "date": "2027-05-04",
+   "fixed": 0,
+   "bd": "2026-11-04",
+   "pre": "Other goal"
+  }
+ ],
+ "holdings": [
+  {
+   "id": "h1",
+   "type": "Equity",
+   "name": "Parag Parikh Flexi Cap Fund - Direct Plan Growth",
+   "val": 3000000,
+   "liq": true,
+   "alloc": {
+    "ret": 70,
+    "edu1": 30
+   },
+   "cost": 1800000,
+   "isin": "INF879O01027"
+  },
+  {
+   "id": "h2",
+   "type": "Equity",
+   "name": "UTI Nifty 50 Index Fund - Direct Plan Growth",
+   "val": 2000000,
+   "liq": true,
+   "alloc": {
+    "ret": 100
+   },
+   "cost": 1400000
+  },
+  {
+   "id": "h3",
+   "type": "Equity",
+   "name": "Employer stock (RSU)",
+   "val": 5000000,
+   "liq": true,
+   "alloc": {
+    "house": 40,
+    "ret": 60
+   },
+   "cost": 5500000
+  },
+  {
+   "id": "h4",
+   "type": "Equity",
+   "name": "HDFC Mid Cap Fund - Direct Plan Growth",
+   "val": 1200000,
+   "liq": true,
+   "alloc": {
+    "edu2": 60,
+    "ret": 30
+   },
+   "cost": 800000
+  },
+  {
+   "id": "h5",
+   "type": "Equity",
+   "name": "Mirae Asset ELSS Tax Saver Fund - Direct Plan Growth",
+   "val": 600000,
+   "liq": false,
+   "alloc": {
+    "house": 100
+   },
+   "cost": 400000
+  },
+  {
+   "id": "h6",
+   "type": "Debt",
+   "name": "EPF (Employees’ Provident Fund)",
+   "val": 1800000,
+   "liq": false,
+   "alloc": {
+    "ret": 100
+   }
+  },
+  {
+   "id": "h7",
+   "type": "Debt",
+   "name": "PPF",
+   "val": 900000,
+   "liq": false,
+   "alloc": {
+    "edu1": 100
+   }
+  },
+  {
+   "id": "h8",
+   "type": "Debt",
+   "name": "ICICI Prudential Corporate Bond Fund - Direct Growth",
+   "val": 700000,
+   "liq": true,
+   "alloc": {
+    "house": 100
+   },
+   "cost": 620000
+  },
+  {
+   "id": "h9",
+   "type": "Equity",
+   "name": "Axis Bluechip Fund - Direct Plan Growth",
+   "val": 1000000,
+   "liq": true,
+   "alloc": {
+    "mar1": 100
+   },
+   "cost": 700000
+  },
+  {
+   "id": "h10",
+   "type": "Liquid",
+   "name": "Savings account (emergency)",
+   "val": 200000,
+   "liq": true,
+   "alloc": {
+    "emerg": 100
+   }
+  },
+  {
+   "id": "h11",
+   "type": "Debt",
+   "name": "Recurring deposit (car)",
+   "val": 700000,
+   "liq": true,
+   "alloc": {
+    "car": 100
+   },
+   "cost": 650000
+  },
+  {
+   "id": "h12",
+   "type": "Liquid",
+   "name": "Liquid fund (vacation)",
+   "val": 350000,
+   "liq": true,
+   "alloc": {
+    "vac": 100
+   },
+   "cost": 330000
+  },
+  {
+   "id": "h13",
+   "type": "Other",
+   "name": "Sovereign Gold Bond 2021 Series",
+   "val": 500000,
+   "liq": false,
+   "alloc": {},
+   "cost": 380000
+  }
+ ],
+ "history": [
+  {
+   "date": "2025-04-24",
+   "total": 12457300,
+   "Equity": 8883200,
+   "Debt": 2845400,
+   "Liquid": 381700,
+   "Other": 347000,
+   "loans": 5200000,
+   "vals": {
+    "h1": 2082000,
+    "h2": 1388000,
+    "h3": 3470000,
+    "h4": 832800,
+    "h5": 416400,
+    "h6": 1249200,
+    "h7": 624600,
+    "h8": 485800,
+    "h9": 694000,
+    "h10": 138800,
+    "h11": 485800,
+    "h12": 242900,
+    "h13": 347000
+   }
+  },
+  {
+   "date": "2025-05-25",
+   "total": 12780400,
+   "Equity": 9113600,
+   "Debt": 2919200,
+   "Liquid": 391600,
+   "Other": 356000,
+   "loans": 5125000,
+   "vals": {
+    "h1": 2136000,
+    "h2": 1424000,
+    "h3": 3560000,
+    "h4": 854400,
+    "h5": 427200,
+    "h6": 1281600,
+    "h7": 640800,
+    "h8": 498400,
+    "h9": 712000,
+    "h10": 142400,
+    "h11": 498400,
+    "h12": 249200,
+    "h13": 356000
+   }
+  },
+  {
+   "date": "2025-06-24",
+   "total": 13103500,
+   "Equity": 9344000,
+   "Debt": 2993000,
+   "Liquid": 401500,
+   "Other": 365000,
+   "loans": 5050000,
+   "vals": {
+    "h1": 2190000,
+    "h2": 1460000,
+    "h3": 3650000,
+    "h4": 876000,
+    "h5": 438000,
+    "h6": 1314000,
+    "h7": 657000,
+    "h8": 511000,
+    "h9": 730000,
+    "h10": 146000,
+    "h11": 511000,
+    "h12": 255500,
+    "h13": 365000
+   }
+  },
+  {
+   "date": "2025-07-25",
+   "total": 13426600,
+   "Equity": 9574400,
+   "Debt": 3066800,
+   "Liquid": 411400,
+   "Other": 374000,
+   "loans": 4975000,
+   "vals": {
+    "h1": 2244000,
+    "h2": 1496000,
+    "h3": 3740000,
+    "h4": 897600,
+    "h5": 448800,
+    "h6": 1346400,
+    "h7": 673200,
+    "h8": 523600,
+    "h9": 748000,
+    "h10": 149600,
+    "h11": 523600,
+    "h12": 261800,
+    "h13": 374000
+   }
+  },
+  {
+   "date": "2025-08-25",
+   "total": 13749700,
+   "Equity": 9804800,
+   "Debt": 3140600,
+   "Liquid": 421300,
+   "Other": 383000,
+   "loans": 4900000,
+   "vals": {
+    "h1": 2298000,
+    "h2": 1532000,
+    "h3": 3830000,
+    "h4": 919200,
+    "h5": 459600,
+    "h6": 1378800,
+    "h7": 689400,
+    "h8": 536200,
+    "h9": 766000,
+    "h10": 153200,
+    "h11": 536200,
+    "h12": 268100,
+    "h13": 383000
+   }
+  },
+  {
+   "date": "2025-09-24",
+   "total": 14072800,
+   "Equity": 10035200,
+   "Debt": 3214400,
+   "Liquid": 431200,
+   "Other": 392000,
+   "loans": 4825000,
+   "vals": {
+    "h1": 2352000,
+    "h2": 1568000,
+    "h3": 3920000,
+    "h4": 940800,
+    "h5": 470400,
+    "h6": 1411200,
+    "h7": 705600,
+    "h8": 548800,
+    "h9": 784000,
+    "h10": 156800,
+    "h11": 548800,
+    "h12": 274400,
+    "h13": 392000
+   }
+  },
+  {
+   "date": "2025-10-25",
+   "total": 14395900,
+   "Equity": 10265600,
+   "Debt": 3288200,
+   "Liquid": 441100,
+   "Other": 401000,
+   "loans": 4750000,
+   "vals": {
+    "h1": 2406000,
+    "h2": 1604000,
+    "h3": 4010000,
+    "h4": 962400,
+    "h5": 481200,
+    "h6": 1443600,
+    "h7": 721800,
+    "h8": 561400,
+    "h9": 802000,
+    "h10": 160400,
+    "h11": 561400,
+    "h12": 280700,
+    "h13": 401000
+   }
+  },
+  {
+   "date": "2025-11-24",
+   "total": 14719000,
+   "Equity": 10496000,
+   "Debt": 3362000,
+   "Liquid": 451000,
+   "Other": 410000,
+   "loans": 4675000,
+   "vals": {
+    "h1": 2460000,
+    "h2": 1640000,
+    "h3": 4100000,
+    "h4": 984000,
+    "h5": 492000,
+    "h6": 1476000,
+    "h7": 738000,
+    "h8": 574000,
+    "h9": 820000,
+    "h10": 164000,
+    "h11": 574000,
+    "h12": 287000,
+    "h13": 410000
+   }
+  },
+  {
+   "date": "2025-12-25",
+   "total": 15042100,
+   "Equity": 10726400,
+   "Debt": 3435800,
+   "Liquid": 460900,
+   "Other": 419000,
+   "loans": 4600000,
+   "vals": {
+    "h1": 2514000,
+    "h2": 1676000,
+    "h3": 4190000,
+    "h4": 1005600,
+    "h5": 502800,
+    "h6": 1508400,
+    "h7": 754200,
+    "h8": 586600,
+    "h9": 838000,
+    "h10": 167600,
+    "h11": 586600,
+    "h12": 293300,
+    "h13": 419000
+   }
+  },
+  {
+   "date": "2026-01-25",
+   "total": 15365200,
+   "Equity": 10956800,
+   "Debt": 3509600,
+   "Liquid": 470800,
+   "Other": 428000,
+   "loans": 4525000,
+   "vals": {
+    "h1": 2568000,
+    "h2": 1712000,
+    "h3": 4280000,
+    "h4": 1027200,
+    "h5": 513600,
+    "h6": 1540800,
+    "h7": 770400,
+    "h8": 599200,
+    "h9": 856000,
+    "h10": 171200,
+    "h11": 599200,
+    "h12": 299600,
+    "h13": 428000
+   }
+  },
+  {
+   "date": "2026-02-22",
+   "total": 15688300,
+   "Equity": 11187200,
+   "Debt": 3583400,
+   "Liquid": 480700,
+   "Other": 437000,
+   "loans": 4450000,
+   "vals": {
+    "h1": 2622000,
+    "h2": 1748000,
+    "h3": 4370000,
+    "h4": 1048800,
+    "h5": 524400,
+    "h6": 1573200,
+    "h7": 786600,
+    "h8": 611800,
+    "h9": 874000,
+    "h10": 174800,
+    "h11": 611800,
+    "h12": 305900,
+    "h13": 437000
+   }
+  },
+  {
+   "date": "2026-03-25",
+   "total": 15113900,
+   "Equity": 10777600,
+   "Debt": 3452200,
+   "Liquid": 463100,
+   "Other": 421000,
+   "loans": 4375000,
+   "vals": {
+    "h1": 2526000,
+    "h2": 1684000,
+    "h3": 4210000,
+    "h4": 1010400,
+    "h5": 505200,
+    "h6": 1515600,
+    "h7": 757800,
+    "h8": 589400,
+    "h9": 842000,
+    "h10": 168400,
+    "h11": 589400,
+    "h12": 294700,
+    "h13": 421000
+   }
+  },
+  {
+   "date": "2026-04-24",
+   "total": 15796000,
+   "Equity": 11264000,
+   "Debt": 3608000,
+   "Liquid": 484000,
+   "Other": 440000,
+   "loans": 4300000,
+   "vals": {
+    "h1": 2640000,
+    "h2": 1760000,
+    "h3": 4400000,
+    "h4": 1056000,
+    "h5": 528000,
+    "h6": 1584000,
+    "h7": 792000,
+    "h8": 616000,
+    "h9": 880000,
+    "h10": 176000,
+    "h11": 616000,
+    "h12": 308000,
+    "h13": 440000
+   }
+  },
+  {
+   "date": "2026-05-25",
+   "total": 16657600,
+   "Equity": 11878400,
+   "Debt": 3804800,
+   "Liquid": 510400,
+   "Other": 464000,
+   "loans": 4225000,
+   "vals": {
+    "h1": 2784000,
+    "h2": 1856000,
+    "h3": 4640000,
+    "h4": 1113600,
+    "h5": 556800,
+    "h6": 1670400,
+    "h7": 835200,
+    "h8": 649600,
+    "h9": 928000,
+    "h10": 185600,
+    "h11": 649600,
+    "h12": 324800,
+    "h13": 464000
+   }
+  },
+  {
+   "date": "2026-06-24",
+   "total": 16980700,
+   "Equity": 12108800,
+   "Debt": 3878600,
+   "Liquid": 520300,
+   "Other": 473000,
+   "loans": 4150000,
+   "vals": {
+    "h1": 2838000,
+    "h2": 1892000,
+    "h3": 4730000,
+    "h4": 1135200,
+    "h5": 567600,
+    "h6": 1702800,
+    "h7": 851400,
+    "h8": 662200,
+    "h9": 946000,
+    "h10": 189200,
+    "h11": 662200,
+    "h12": 331100,
+    "h13": 473000
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "total": 17303800,
+   "Equity": 12339200,
+   "Debt": 3952400,
+   "Liquid": 530200,
+   "Other": 482000,
+   "loans": 4075000,
+   "vals": {
+    "h1": 2892000,
+    "h2": 1928000,
+    "h3": 4820000,
+    "h4": 1156800,
+    "h5": 578400,
+    "h6": 1735200,
+    "h7": 867600,
+    "h8": 674800,
+    "h9": 964000,
+    "h10": 192800,
+    "h11": 674800,
+    "h12": 337400,
+    "h13": 482000
+   }
+  },
+  {
+   "date": "2026-08-25",
+   "total": 17626900,
+   "Equity": 12569600,
+   "Debt": 4026200,
+   "Liquid": 540100,
+   "Other": 491000,
+   "loans": 4000000,
+   "vals": {
+    "h1": 2946000,
+    "h2": 1964000,
+    "h3": 4910000,
+    "h4": 1178400,
+    "h5": 589200,
+    "h6": 1767600,
+    "h7": 883800,
+    "h8": 687400,
+    "h9": 982000,
+    "h10": 196400,
+    "h11": 687400,
+    "h12": 343700,
+    "h13": 491000
+   }
+  },
+  {
+   "date": "2026-09-24",
+   "total": 17714000,
+   "Equity": 12600000,
+   "Debt": 4072000,
+   "Liquid": 542000,
+   "Other": 500000,
+   "loans": 3925000,
+   "vals": {
+    "h1": 3000000,
+    "h2": 2000000,
+    "h3": 4800000,
+    "h4": 1200000,
+    "h5": 600000,
+    "h6": 1800000,
+    "h7": 900000,
+    "h8": 700000,
+    "h9": 1000000,
+    "h10": 192000,
+    "h11": 672000,
+    "h12": 350000,
+    "h13": 500000
+   }
+  }
+ ],
+ "docs": [
+  {
+   "t": "Personal details",
+   "rows": [
+    {
+     "k": "PAN",
+     "v": "ABCDE1234F (sample)"
+    },
+    {
+     "k": "Aadhaar",
+     "v": "XXXX XXXX 1234 (sample)"
+    },
+    {
+     "k": "Blood group",
+     "v": "O+"
+    }
+   ]
+  },
+  {
+   "t": "ID documents",
+   "tpl": "ids",
+   "rows": [
+    {
+     "id": "i1",
+     "who": "Self",
+     "type": "Passport",
+     "no": "Z1234567",
+     "exp": "2026-11-24"
+    },
+    {
+     "id": "i2",
+     "who": "Spouse",
+     "type": "Driving licence",
+     "no": "KA01 2015 0001234",
+     "exp": "2031-08-14"
+    }
+   ]
+  },
+  {
+   "t": "Insurance policies",
+   "tpl": "ins",
+   "rows": [
+    {
+     "id": "p1",
+     "who": "Family",
+     "type": "Health",
+     "prov": "Star Health",
+     "no": "P/123456/01",
+     "prem": 28000,
+     "due": "2026-11-16",
+     "sum": 1000000,
+     "nom": "Spouse"
+    },
+    {
+     "id": "p2",
+     "who": "Self",
+     "type": "Term",
+     "prov": "HDFC Life",
+     "no": "TL998877",
+     "prem": 18000,
+     "due": "2027-03-15",
+     "sum": 20000000,
+     "nom": "Spouse"
+    }
+   ]
+  },
+  {
+   "t": "Bank accounts",
+   "tpl": "bank",
+   "rows": [
+    {
+     "id": "b1",
+     "who": "Self",
+     "bank": "State Bank of India",
+     "no": "XXXX1234",
+     "branch": "Indiranagar",
+     "ifsc": "SBIN0000001",
+     "nom": "Spouse",
+     "care": "1800 1234"
+    }
+   ]
+  },
+  {
+   "t": "Fixed and recurring deposits",
+   "tpl": "fd",
+   "rows": [
+    {
+     "id": "f1",
+     "who": "Spouse",
+     "bank": "Canara Bank",
+     "no": "FD-55667",
+     "type": "Fixed deposit",
+     "amt": 200000,
+     "start": "2025-12-01",
+     "mat": "2026-11-29",
+     "nom": "Self"
+    }
+   ]
+  },
+  {
+   "t": "Emergency contacts",
+   "rows": [
+    {
+     "k": "Doctor",
+     "v": "Dr. Rao, 98450 00000"
+    },
+    {
+     "k": "Preferred hospital",
+     "v": "City Hospital"
+    },
+    {
+     "k": "Financial planner",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "t": "Where documents are kept",
+   "rows": [
+    {
+     "k": "Property papers",
+     "v": "Bank locker"
+    },
+    {
+     "k": "Fixed deposit certificates",
+     "v": "Home safe, top shelf"
+    }
+   ]
+  },
+  {
+   "t": "Loans",
+   "tpl": "loan",
+   "rows": [
+    {
+     "id": "l1",
+     "type": "Home loan",
+     "bank": "State Bank of India",
+     "no": "XXXX4521",
+     "amt": 5000000,
+     "rate": "8.5",
+     "start": "2021-06-10",
+     "ten": 240,
+     "emi": 43391
+    },
+    {
+     "id": "l2",
+     "type": "Car loan",
+     "bank": "HDFC Bank",
+     "no": "XXXX7788",
+     "amt": 600000,
+     "rate": "9.2",
+     "start": "2024-01-05",
+     "ten": 60,
+     "emi": 12513
+    }
+   ]
+  },
+  {
+   "t": "Mutual fund folios",
+   "tpl": "mf",
+   "rows": [
+    {
+     "id": "m1",
+     "house": "Parag Parikh Mutual Fund",
+     "fund": "Parag Parikh Flexi Cap Fund - Direct Plan Growth",
+     "folio": "12345678"
+    },
+    {
+     "id": "m2",
+     "house": "HDFC Mutual Fund",
+     "fund": "HDFC Mid Cap Fund - Direct Plan Growth",
+     "folio": "9876543/21"
+    },
+    {
+     "id": "m3",
+     "house": "Mirae Asset Mutual Fund",
+     "fund": "Mirae Asset ELSS Tax Saver Fund - Direct Plan Growth",
+     "folio": "79912345"
+    }
+   ]
+  }
+ ],
+ "fam": {
+  "age": 38,
+  "ret": 60,
+  "sp": {
+   "age": 35,
+   "ret": 58
+  },
+  "kids": [
+   {
+    "by": 2016
+   },
+   {
+    "by": 2020
+   }
+  ]
+ },
+ "lastUpdate": "2026-09-24",
+ "lastBackup": "2026-09-04"
+}
