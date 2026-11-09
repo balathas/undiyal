@@ -294,10 +294,13 @@ async function read(buf,pw){const b=new Uint8Array(buf),s=L1(b);if(!s.startsWith
  for(const{p,res}of pages){let cs=R(p.Contents);cs=Array.isArray(cs)?cs:[p.Contents];
   let src='';for(const c of cs){const d=await data(c);if(d)src+=L1(d)+'\n'}
   const items=[];await run(src,res,[1,0,0,1,0,0],items,0);
-  /* group text into rows by baseline, then order left to right */
+  /* group text into rows by baseline, then order left to right. Table cells can sit almost touching (a right-aligned number
+     next to the following cell), so two separate pieces of text that are each a whole number, a date and a number,
+     or a number and "--" always get a space between them, whatever the gap */
+  const glue=(a,b)=>/\d\.\d+$/.test(a)&&/^-?[\d,]*\d\.\d/.test(b)||/\d{1,2}-(\d{2}|[A-Za-z]{3})-\d{4}$/.test(a)&&/^[\d-]/.test(b)||/\d$/.test(a)&&/^--/.test(b)||/--$/.test(a)&&/^\d/.test(b);
   const rows=[];items.sort((a,b)=>b.y-a.y||a.x-b.x);
   for(const it of items){const r=rows.find(r=>Math.abs(r.y-it.y)<Math.max(1.5,Math.min(r.h,it.h)*.5));if(r)r.a.push(it);else rows.push({y:it.y,h:it.h,a:[it]})}
-  rows.sort((a,b)=>b.y-a.y);for(const r of rows){r.a.sort((a,b)=>a.x-b.x);let l='',ex=null;for(const it of r.a){if(ex!=null&&it.x-ex>it.h*.15&&!/\s$/.test(l))l+=' ';l+=it.t;ex=it.ex}out.push(l.replace(/\s+/g,' ').trim())}
+  rows.sort((a,b)=>b.y-a.y);for(const r of rows){r.a.sort((a,b)=>a.x-b.x);let l='',ex=null;for(const it of r.a){if(ex!=null&&!/\s$/.test(l)&&(it.x-ex>it.h*.15||glue(l,it.t)))l+=' ';l+=it.t;ex=it.ex}out.push(l.replace(/\s+/g,' ').trim())}
   out.push('')}
  return out.join('\n')}
 
@@ -352,27 +355,36 @@ function demat(L){const IS=/\b(IN[A-Z0-9]{9}\d)\b/,NUM=/^-?[\d,]+(\.\d+)?$/,END=
    security name wrapped above and below; mutual fund folio rows are "ISIN folio units/NAV cost value ..." and the
    scheme name is taken from the transaction section ("<scheme name>" then "ISIN : <ISIN>"). */
 function cdsl(L){const T='(?:[\\d,]+(?:\\.\\d+)?|--)',ROW=new RegExp('^(.*?)\\s*((?:'+T+'\\s+){6}'+T+')$'),IS=/^(IN[A-Z0-9]{9}\d)\b\s*(.*)$/,
- NOISE=/[^\x00-\x7F]|^Page \d+ of \d+|Portfolio Value|Summary of|Account Details|^(Market|Pledge|Bal|Value|Current|Security|Price|Face)\b|^ISIN\b|Total/i;
+ NOISE=/[^\x00-\x7F]|^Page \d+ of \d+|Portfolio Value|Summary of|Account Details|^((Market|Pledge|Bal|Value|Current|Security|Price|Face|Free|Frozen|Setup)\b[\s\/()`]*)+$|^ISIN\b|Total/i;
+ /* numbers that arrive run together: "19.00014379.4600" (units, 3 decimals; price, 4 decimals), "16-10-202689766.900", "19.000--" */
+ L=L.map(l=>l.replace(/(\d{2}-\d{2}-\d{4})(?=[\d-])/g,'$1 ').replace(/(\d)(?=--)/g,'$1 ').replace(/--(?=[\d-])/g,'-- ').replace(/(\d\.\d{3})(?=\d+\.\d)/g,'$1 ').replace(/(\.\d{4})(?=\d[\d,]*\.\d{2}(?![\d.]))/g,'$1 '));
  const secs=[];let cs=null;
  for(const raw of L){const l=raw.replace(/\s+/g,' ').trim();if(!l)continue;
   if(l=='Value'){cs={rows:[],gaps:[[]]};secs.push(cs);continue}if(!cs)continue;
   if(/^Page \d+ of \d+/i.test(l)||/^Portfolio Value/i.test(l)){cs=null;continue}
   const m=IS.exec(l),r=m&&ROW.exec(m[2]);
   if(r){cs.rows.push({isin:m[1],above:[],below:[],center:r[1],run:r[2].split(' ')});cs.gaps.push([]);continue}
-  if(/[A-Za-z]/.test(l)&&!NOISE.test(l))cs.gaps[cs.gaps.length-1].push(l)}
- /* split the lines between two rows: name starts ("#", LIMITED, LTD) begin the next name; share descriptors
-    (EQUITY SHARES, RS 2/-, AFTER SPLIT, "- ...") and single words continue the previous one; otherwise keep names balanced */
- const cont=x=>/^(-|EQUITY\b|EQ\b|SHARES?\b|RS\b|RS\.|RE\b|RE\.|AFTER\b|SPLIT\b|FV\b|OF\b)/i.test(x)||/\d\s*\/-/.test(x)||!/\s/.test(x),
-  start=x=>/#|\bLIMITED\b|\bLTD\b/i.test(x),needs=r=>!r.center||/^(LIMITED|LTD|-|FUND\b|#)/i.test(r.center);
+  if((/[A-Za-z]/.test(l)||/^\d{1,2}[.\/-]\d{1,2}[.\/-]\d{4}$/.test(l))&&!NOISE.test(l))cs.gaps[cs.gaps.length-1].push(l)}
+ /* split the lines between two rows. Each description is centred on its number row, so a row takes as many lines
+    below as it has above. A line that can only continue a name (LIMITED ..., EQUITY SHARES, RS 2/-, AFTER SPLIT,
+    "- ...", a single word) should not start the next name, and a row with no name text of its own needs a line above.
+    Each possible split is scored on these and the best one wins, so one odd line cannot shift every name after it. */
+ const tail=x=>/^(-|LIMITED\b|LTD\b|EQUITY\b|EQTY\b|EQ\b|SHARES?\b|SH\b|RS\b|RS\.|RE\b|RE\.|AFTER\b|SPLIT\b|SUB\b|SUB-|DIVISION\b|SUBDIVISION\b|WITH\b|FACE\b|VALUE\b|FV\b|OF\b|NEW\b|CODE\b|SERIES\b)/i.test(x)||/\d\s*\/-|^\d{4}-\d{2}\b|^\d{1,2}[.\/-]\d{1,2}[.\/-]\d{4}/.test(x)||!/\s/.test(x),
+  needs=r=>!r.center||tail(r.center)||/^(FUND\b|#)/i.test(r.center);
  const recs=[];
  for(const c of secs){const R=c.rows;if(!R.length)continue;R[0].above=c.gaps[0];
-  for(let i=0;i+1<R.length;i++){const g=c.gaps[i+1],n=g.length,need=Math.max(0,R[i].above.length-R[i].below.length);let k;
-   const si=g.findIndex(start);if(si>=0){k=si;while(k-1>=need&&k>0&&!cont(g[k-1]))k--}else{k=Math.min(need,n);while(k<n&&cont(g[k]))k++;if(k==n&&n>0&&needs(R[i+1]))k=n-1}
+  for(let i=0;i+1<R.length;i++){const g=c.gaps[i+1],n=g.length,need=Math.max(0,R[i].above.length-R[i].below.length);let k=0,best=1/0;
+   for(let j=0;j<=n;j++){const s=2*Math.abs(j-need)+(j<n&&tail(g[j])?3:0)+(j==n&&needs(R[i+1])?3:0);if(s<best){best=s;k=j}}
    R[i].below.push(...g.slice(0,k));R[i+1].above=g.slice(k)}
   R[R.length-1].below.push(...c.gaps[c.gaps.length-1]);recs.push(...R)}
- const nmOf=(n,is)=>{n=n.replace(/\s+/g,' ').trim();const h=n.indexOf('#');if(h>=0){const a=n.slice(0,h).trim(),b=n.slice(h+1).trim();n=(/^INF/.test(is||'')||/mutual fund|\bAMC\b|asset management/i.test(a))&&b?b:a}
-  if(/^INF/.test(is||''))n=n.replace(/^[A-Z&.' ]{2,30}?\s+MF\s*-\s*/i,'');return n.replace(/\s*-?\s*(NEW\s+)?(EQUITY|EQ)\s+SHARES?\b.*$/i,'').replace(/\s+-\s+NEW\b.*$/i,'').replace(/\s*-\s*$/,'').trim()};
- const out=recs.map(r=>{const v=r.run.map(t=>t=='--'?0:num(t));return{name:clean(nmOf([...r.above,r.center,...r.below].filter(Boolean).join(' '),r.isin))||r.isin,val:v[6],cost:null,isin:r.isin,sec:/^INF/.test(r.isin)?'mf':'eq',folio:''}});
+ /* "!!", "**", "$$", "@@" are footnote marks printed next to the ISIN (valued at face value, under liquidation and so on) */
+ const nmOf=(n,is)=>{n=n.replace(/!!|\*\*|\$\$|@@/g,' ').replace(/\s+/g,' ').trim();
+  const sg=/([\d.]+)\s*%\s*SGB\b\s*(\d{4}-\d{2})?\s*(SERIES\s+[IVXL]+)?/i.exec(n),rd=/RED(?:EMPTION)?\s*(?:DT|DATE)\.?\s*:?\s*(\d{1,2})[.\/-](\d{1,2})[.\/-](\d{4})/i.exec(n);
+  if(sg)return'Sovereign Gold Bond '+sg[1]+'%'+(sg[2]?' '+sg[2]:'')+(sg[3]?' '+sg[3].replace(/SERIES/i,'Series'):'')+(rd?' (matures '+rd[1].padStart(2,'0')+'-'+rd[2].padStart(2,'0')+'-'+rd[3]+')':'');
+  const h=n.indexOf('#');if(h>=0){const a=n.slice(0,h).trim(),b=n.slice(h+1).trim();n=b&&!/^(NEW\s+)?(EQUITY|EQTY|EQ)\b/i.test(b)&&(/^INF/.test(is||'')||/mutual fund|\bAMC\b|asset management/i.test(a))?b:a}
+  if(/^INF/.test(is||''))n=n.replace(/^[A-Z&.' ]{2,30}?\s+MF\s*-\s*/i,'');
+  return n.replace(/\b(LIMITED|LTD\.?)\s*-?\s*(NEW\s+)?(EQUITY|EQTY|EQ|RE\b|RS\b|SHARES|FV\b|FACE|AFTER)\b.*$/i,'$1').replace(/\s*-?\s*(NEW\s+)?(EQUITY|EQTY|EQ)\s+SHARES?\b.*$/i,'').replace(/\s+-\s+NEW\b.*$/i,'').replace(/\s*-\s*$/,'').trim()};
+ const out=recs.map(r=>{const v=r.run.map(t=>t=='--'?0:num(t)),nm=clean(nmOf([...r.above,r.center,...r.below].filter(Boolean).join(' '),r.isin))||r.isin;return{name:nm,val:v[6],cost:null,isin:r.isin,sec:/^INF/.test(r.isin)?'mf':/^Sovereign Gold Bond/.test(nm)?'sgb':'eq',folio:''}});
  const SN={};for(let i=0;i+1<L.length;i++){const m=/^ISIN\s*:\s*(INF[A-Z0-9]{9})/.exec(L[i+1].trim());if(m&&/[A-Za-z]{3}/.test(L[i])&&!/[^\x00-\x7F]/.test(L[i]))SN[m[1]]=L[i].replace(/^.*Scheme Name\s*:\s*/i,'').replace(/\s+Scheme\s+\S+\s*:.*$/i,'').trim()}
  for(const raw of L){const l=raw.replace(/\s+/g,' ').trim();if(/^IN[A-Z0-9]{9}\d\b/.test(l))continue;const m=/(INF[A-Z0-9]{9})\s+(\d{5,}(?:\/\d+)?)\s+\S+\s+([\d,]+\.\d{2})\s+([\d,]+\.\d{2})/.exec(l);
   if(m){const k=Object.keys(SN).find(x=>x==m[1]||x.startsWith(m[1])||m[1].startsWith(x)),is=k||m[1].slice(0,12);out.push({name:clean(SN[k]||l.slice(0,m.index))||is,val:num(m[4]),cost:num(m[3]),isin:is,sec:'mf',folio:m[2]})}}
