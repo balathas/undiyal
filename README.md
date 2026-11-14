@@ -28,7 +28,7 @@ An *undiyal* (உண்டியல்) is the little savings box many of us had
 - **Goals:** retirement, children's education and marriage, a house, an emergency fund. See what each goal costs today and when it falls due, how far along you are, and how much to invest each month (or as a lump sum).
 - **Holdings:** mutual funds, shares, ETFs, PF, PPF, NPS, deposits and savings in one list, with what you invested and what it is worth now. Split any holding across goals.
 - **Statement import:** reads NSDL, CDSL (including the bilingual layout) and CAMS / KFintech / MF Central CAS PDFs in your browser, including password-protected and AES-256 encrypted files. Folio numbers go to your records automatically.
-- **Plain-language dashboard:** next steps, on-track status for each goal, rebalancing by goal, alerts for premiums, maturities and expiries, and six charts you can reorder or hide.
+- **Plain-language dashboard:** three headline numbers (saved, needed, invest each month), a goal timeline, next steps, on-track status for each goal, rebalancing by goal, alerts for premiums, maturities and expiries, and five charts you can reorder or hide.
 - **Loans and net worth:** EMI, outstanding principal and interest still to pay, worked out for you.
 - **Important records:** insurance, bank accounts, IDs, deposits, demat accounts, folios, property and locker details, with scanned documents attached.
 - **Sharing:** a simple family summary, or a detailed report for an adviser with the sections you choose, as HTML or PDF.
@@ -53,7 +53,7 @@ There is nothing to install and no sign-up. To try a full example, open [`undiya
 |---|---|
 | Chrome / Edge (Windows, Mac, Linux) | Full: saves straight to your file |
 | Chrome (Android) | Full: saves straight to your file |
-| Firefox / Safari | Works; use **Download JSON** to save changes |
+| Firefox / Safari | Works; use **Save data** to download your file after changes |
 | iPhone / iPad | Not supported (iOS cannot run a local HTML file) |
 
 ## Privacy

@@ -1,4 +1,5 @@
 {
+ "schema": 2,
  "settings": {
   "fmt": "lakh",
   "sym": "₹",
