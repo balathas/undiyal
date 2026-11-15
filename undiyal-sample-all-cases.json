@@ -116,7 +116,9 @@
     "edu1": 30
    },
    "cost": 1800000,
-   "isin": "INF879O01027"
+   "isin": "INF879O01027",
+   "ra": 15000,
+   "rm": 1
   },
   {
    "id": "h2",
@@ -127,7 +129,9 @@
    "alloc": {
     "ret": 100
    },
-   "cost": 1400000
+   "cost": 1400000,
+   "ra": 10000,
+   "rm": 1
   },
   {
    "id": "h3",
@@ -162,7 +166,9 @@
    "alloc": {
     "house": 100
    },
-   "cost": 400000
+   "cost": 400000,
+   "ra": 12500,
+   "rm": 1
   },
   {
    "id": "h6",
@@ -172,7 +178,9 @@
    "liq": false,
    "alloc": {
     "ret": 100
-   }
+   },
+   "ra": 21600,
+   "rm": 1
   },
   {
    "id": "h7",
@@ -182,7 +190,9 @@
    "liq": false,
    "alloc": {
     "edu1": 100
-   }
+   },
+   "ra": 150000,
+   "rm": 12
   },
   {
    "id": "h8",
@@ -225,7 +235,9 @@
    "alloc": {
     "car": 100
    },
-   "cost": 650000
+   "cost": 650000,
+   "ra": 10000,
+   "rm": 1
   },
   {
    "id": "h12",
@@ -873,13 +885,128 @@
   },
   "kids": [
    {
-    "by": 2016
+    "by": 2016,
+    "id": "ksgagjd4"
    },
    {
-    "by": 2020
+    "by": 2020,
+    "id": "k0q7chws"
    }
   ]
  },
  "lastUpdate": "2026-09-24",
- "lastBackup": "2026-09-04"
+ "lastBackup": "2026-09-04",
+ "cc": {
+  "age": 38,
+  "retAge": 60,
+  "life": 90,
+  "exp": 100000,
+  "infl": 0.06,
+  "post": 0.06,
+  "ret": 0.08,
+  "other": 0,
+  "plans": {
+   "self": [
+    {
+     "n": "Deferred annuity (bought 2022)",
+     "a": 62,
+     "y": 180000,
+     "g": 0,
+     "e": ""
+    },
+    {
+     "n": "Employer pension",
+     "a": 60,
+     "y": 240000,
+     "g": 3,
+     "e": ""
+    },
+    {
+     "n": "Rental income, flat (until sold)",
+     "a": 60,
+     "y": 300000,
+     "g": 5,
+     "e": 75
+    },
+    {
+     "n": "Money-back policy, 1st payout",
+     "a": 61,
+     "y": 200000,
+     "once": 1
+    },
+    {
+     "n": "Money-back policy, 2nd payout",
+     "a": 66,
+     "y": 200000,
+     "once": 1
+    },
+    {
+     "n": "Endowment policy maturity",
+     "a": 65,
+     "y": 1500000,
+     "once": 1
+    },
+    {
+     "n": "ULIP maturity (before retirement)",
+     "a": 55,
+     "y": 800000,
+     "once": 1
+    }
+   ],
+   "sp": [
+    {
+     "n": "Deferred annuity",
+     "a": 60,
+     "y": 120000,
+     "g": 0,
+     "e": ""
+    },
+    {
+     "n": "Term plan with return of premium",
+     "a": 63,
+     "y": 600000,
+     "once": 1
+    }
+   ]
+  },
+  "lad": {
+   "self": {
+    "on": true,
+    "pre": "own",
+    "steps": [
+     [
+      60,
+      15,
+      7
+     ],
+     [
+      67,
+      15,
+      8.2
+     ],
+     [
+      72,
+      10,
+      9
+     ],
+     [
+      78,
+      10,
+      10
+     ]
+    ]
+   },
+   "sp": {
+    "on": true,
+    "pre": "light",
+    "steps": [
+     [
+      58,
+      20,
+      6.7
+     ]
+    ]
+   }
+  }
+ }
 }

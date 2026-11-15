@@ -27,6 +27,8 @@ An *undiyal* (உண்டியல்) is the little savings box many of us had
 
 - **Goals:** retirement, children's education and marriage, a house, an emergency fund. See what each goal costs today and when it falls due, how far along you are, and how much to invest each month (or as a lump sum).
 - **Holdings:** mutual funds, shares, ETFs, PF, PPF, NPS, deposits and savings in one list, with what you invested and what it is worth now. Split any holding across goals.
+- **SIPs & contributions:** enter what already goes in every month or year (SIPs, PF, PPF, RD), one by one or with a CSV. Undiyal counts it towards each goal and shows only the extra you need to invest.
+- **Retirement corpus calculator:** works out the corpus you need, counts pension plans you have already bought, and can plan an annuity ladder (buying lifetime income in steps), with charts of where each year's spending comes from.
 - **Statement import:** reads NSDL, CDSL (including the bilingual layout) and CAMS / KFintech / MF Central CAS PDFs in your browser, including password-protected and AES-256 encrypted files. Folio numbers go to your records automatically.
 - **Plain-language dashboard:** three headline numbers (saved, needed, invest each month), a goal timeline, next steps, on-track status for each goal, rebalancing by goal, alerts for premiums, maturities and expiries, and five charts you can reorder or hide.
 - **Loans and net worth:** EMI, outstanding principal and interest still to pay, worked out for you.
@@ -35,9 +37,15 @@ An *undiyal* (உண்டியல்) is the little savings box many of us had
 - **Five languages:** English, Hindi, Tamil, Telugu and Kannada.
 - **Works on a phone:** Android Chrome is fully supported, with layouts designed for small screens.
 
-| Holdings | Important records | Tamil, on a phone |
-|---|---|---|
-| ![Holdings](screenshots/holdings.png) | ![Important](screenshots/important.png) | ![Phone, Tamil](screenshots/phone-tamil.png) |
+| Goal cards | Retirement corpus calculator |
+|---|---|
+| ![Goal cards](screenshots/goals.png) | ![Retirement corpus calculator with plans and an annuity ladder](screenshots/corpus.png) |
+| **Holdings** | **SIPs & contributions** |
+| ![Holdings](screenshots/holdings.png) | ![SIPs & contributions](screenshots/sips.png) |
+| **Dashboard charts** | **Important records** |
+| ![Dashboard charts](screenshots/charts.png) | ![Important](screenshots/important.png) |
+
+<p align="center"><b>Tamil, on a phone</b><br><img src="screenshots/phone-tamil.png" alt="Dashboard in Tamil on a phone" width="300"></p>
 
 ## Get started
 
