@@ -20,7 +20,8 @@
    "fixed": 60000000,
    "kind": "corpus",
    "bd": "2026-11-04",
-   "pre": "Retirement"
+   "pre": "Retirement",
+   "tpl": "ret"
   },
   {
    "id": "sret",
@@ -31,7 +32,8 @@
    "fixed": 30000000,
    "kind": "corpus",
    "bd": "2026-11-04",
-   "pre": "Retirement"
+   "pre": "Retirement",
+   "tpl": "sret"
   },
   {
    "id": "edu1",
@@ -41,7 +43,8 @@
    "date": "2034-06-30",
    "fixed": 0,
    "bd": "2021-04-01",
-   "pre": "Child higher education"
+   "pre": "Child higher education",
+   "tpl": "ug"
   },
   {
    "id": "edu2",
@@ -51,7 +54,8 @@
    "date": "2038-06-30",
    "fixed": 0,
    "bd": "2026-11-04",
-   "pre": "Child higher education"
+   "pre": "Child higher education",
+   "tpl": "ug"
   },
   {
    "id": "mar1",
@@ -61,7 +65,8 @@
    "date": "2042-12-31",
    "fixed": 0,
    "bd": "2026-11-04",
-   "pre": "Child marriage"
+   "pre": "Child marriage",
+   "tpl": "wed"
   },
   {
    "id": "house",
@@ -71,7 +76,8 @@
    "date": "2029-03-04",
    "fixed": 0,
    "bd": "2026-11-04",
-   "pre": "House"
+   "pre": "House",
+   "tpl": "house"
   },
   {
    "id": "emerg",
@@ -81,7 +87,8 @@
    "date": "2027-07-04",
    "fixed": 0,
    "bd": "2026-11-04",
-   "pre": "Emergency fund"
+   "pre": "Emergency fund",
+   "tpl": "emerg"
   },
   {
    "id": "car",
@@ -91,7 +98,8 @@
    "date": "2028-03-04",
    "fixed": 0,
    "bd": "2026-11-04",
-   "pre": "Other goal"
+   "pre": "Other goal",
+   "tpl": "car"
   },
   {
    "id": "vac",
@@ -101,7 +109,30 @@
    "date": "2027-05-04",
    "fixed": 0,
    "bd": "2026-11-04",
-   "pre": "Other goal"
+   "pre": "Other goal",
+   "tpl": "vac"
+  },
+  {
+   "id": "health",
+   "name": "Parents’ medical fund",
+   "base": 1500000,
+   "infl": 0.1,
+   "date": "2031-03-31",
+   "fixed": 0,
+   "kind": "",
+   "bd": "2021-04-01",
+   "tpl": "health"
+  },
+  {
+   "id": "reno",
+   "name": "Home renovation",
+   "base": 800000,
+   "infl": 0.07,
+   "date": "2029-03-31",
+   "fixed": 0,
+   "kind": "",
+   "bd": "2021-04-01",
+   "tpl": "reno"
   }
  ],
  "holdings": [

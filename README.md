@@ -25,7 +25,7 @@ An *undiyal* (உண்டியல்) is the little savings box many of us had
 
 ## What it does
 
-- **Goals:** retirement, children's education and marriage, a house, an emergency fund. See what each goal costs today and when it falls due, how far along you are, and how much to invest each month (or as a lump sum).
+- **Goals:** retirement, children's education and marriage, a house, an emergency fund. Start from a starter pack or a library of 14 common goals with example amounts and a small helper. See what each goal costs today and when it falls due, how far along you are, and how much to invest each month (or as a lump sum).
 - **Holdings:** mutual funds, shares, ETFs, PF, PPF, NPS, deposits and savings in one list, with what you invested and what it is worth now. Split any holding across goals.
 - **SIPs & contributions:** enter what already goes in every month or year (SIPs, PF, PPF, RD), one by one or with a CSV. Undiyal counts it towards each goal and shows only the extra you need to invest.
 - **Retirement corpus calculator:** works out the corpus you need, counts pension plans you have already bought, and can plan an annuity ladder (buying lifetime income in steps), with charts of where each year's spending comes from.
