@@ -30,12 +30,14 @@ An *undiyal* (உண்டியல்) is the little savings box many of us had
 - **SIPs & contributions:** enter what already goes in every month or year (SIPs, PF, PPF, RD), one by one or with a CSV. Undiyal counts it towards each goal and shows only the extra you need to invest.
 - **Retirement corpus calculator:** works out the corpus you need, counts pension plans you have already bought, and can plan an annuity ladder (buying lifetime income in steps), with charts of where each year's spending comes from.
 - **Statement import:** reads NSDL, CDSL (including the bilingual layout) and CAMS / KFintech / MF Central CAS PDFs in your browser, including password-protected and AES-256 encrypted files. You review everything on one screen (shortened, editable names; new or update for each holding) and add it with one click. Folio numbers go to your records automatically.
-- **Plain-language dashboard:** three headline numbers (saved, needed, invest each month), a goal timeline, next steps, on-track status for each goal, rebalancing by goal, alerts for premiums, maturities and expiries, and five charts you can reorder or hide.
+- **Plain-language dashboard:** three headline numbers (saved, needed, invest each month), a goal timeline, next steps with the reminders and checks in the same card, on-track status for each goal, rebalancing by goal, alerts for premiums, maturities and expiries, and five charts you can reorder or hide.
 - **Loans and net worth:** EMI, outstanding principal and interest still to pay, worked out for you.
 - **Important records:** insurance, bank accounts, IDs, deposits, demat accounts, folios, property and locker details, with scanned documents attached.
 - **Sharing:** a simple family summary, or a detailed report for an adviser with the sections you choose, as HTML or PDF.
 - **Five languages:** English, Hindi, Tamil, Telugu and Kannada.
-- **Works on a phone:** Android Chrome is fully supported, with layouts designed for small screens.
+- **Edit one thing at a time:** click a holding, goal or loan by name (or its Edit button) and it opens in a panel beside the list — a sheet from the bottom on a phone. Nothing changes until you press Save.
+- **Search:** the box in the header, or Ctrl/⌘ K, finds any tab, holding, goal, loan or record by name and takes you there.
+- **Works on a phone:** Android Chrome is fully supported, with layouts designed for small screens: the tabs sit in a bar at the bottom (Home, Holdings, Goals, Important, More).
 
 | Goal cards | Retirement corpus calculator |
 |---|---|
