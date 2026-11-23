@@ -33,7 +33,7 @@ An *undiyal* (உண்டியல்) is the little savings box many of us had
 - **Plain-language dashboard:** three headline numbers (saved, needed, invest each month), a goal timeline, next steps with the reminders and checks in the same card, on-track status for each goal, rebalancing by goal, alerts for premiums, maturities and expiries, and five charts you can reorder or hide.
 - **Loans and net worth:** EMI, outstanding principal and interest still to pay, worked out for you.
 - **Important records:** insurance, bank accounts, IDs, deposits, demat accounts, folios, property and locker details, with scanned documents attached.
-- **Sharing:** a simple family summary, or a detailed report for an adviser with the sections you choose, as HTML or PDF.
+- **Sharing:** a simple family summary, or a detailed report for an adviser with the sections you choose, as HTML or PDF. A separate **Documents pack** saves your attached scans and statements as a zip, kept out of the shared summary on purpose.
 - **Five languages:** English, Hindi, Tamil, Telugu and Kannada.
 - **Edit one thing at a time:** click a holding, goal or loan by name (or its Edit button) and it opens in a panel beside the list — a sheet from the bottom on a phone. Nothing changes until you press Save.
 - **Search:** the box in the header, or Ctrl/⌘ K, finds any tab, holding, goal, loan or record by name and takes you there.
